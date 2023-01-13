@@ -123,9 +123,6 @@ def remove ():
     return None
 
 
-def UBEM(building):
-    
-
 "RUNS the SIMULATION"
 if __name__ == '__main__':
     nThreads = multiprocessing.cpu_count()
