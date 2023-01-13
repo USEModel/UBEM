@@ -1,0 +1,2 @@
+wwr,hotWaterTemp,coldWaterTemp
+0.2,55,10
