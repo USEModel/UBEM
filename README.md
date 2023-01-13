@@ -6,11 +6,6 @@ This model is developed under the reasech project for "Activity-Based Urban Buil
 
 UBEM.py is a collection of functions and classes which can be used for modeling and simulation of buildings at different spatial and temporal resolutions.
 
-The model is going to be published in:
-
-[1] F. Johari, F. Shadram, J. Widén, Urban building energy modeling from geo-referenced energy performance certificate data: Development, calibration, and validation, 2023.
-
-Any academic or educational use of the model should cite [1], for corporate use, contact Fatemeh Johari at fatemeh.johari@angstrom.uu.se
 
 Requirements
 
