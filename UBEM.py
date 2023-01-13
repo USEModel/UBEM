@@ -5,6 +5,7 @@ Created on Thu Nov 18 12:20:28 2021
 @author: fatjo876
 """
 
+
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry.polygon import Polygon, LineString
@@ -29,48 +30,37 @@ from visualization import Visualization
 
 """ Initializing the simulation tool EnergyPlus """
 
-# Call the idd (EnergyPlus exe file)
+# Calls the idd (EnergyPlus exe file)
 iddfile = "C:/EnergyPlusV9-2-0/Energy+.idd"
 
-# Initialize the idf file processing.
+# Initializes the idf file processing.
 IDF.setiddname(iddfile)
 
 
 """ Importing the input parameters """
 
 # EnergyPlus weather file.
-#epw = "inputs/SWE_Stockholm.Arlanda.024600_IWEC.epw"
-epw = "inputs/tmy_Borlange_2005_2020.epw"
+epw = "inputs/SWE_Stockholm.Arlanda.024600_IWEC.epw"
 
-#gis = gpd.read_file('X:/UBEM/data/GIS_Borlänge/footprintData')
-gis = pd.read_csv('X:/UBEM/Data Pre-processing/outputData/processedGisDataBorlange.csv')
-gis['geometry'] = gis['geometry'].apply(wkt.loads)
-gis = gpd.GeoDataFrame(gis, crs='epsg:3006')
-gis = gis.drop('Unnamed: 0', axis = 1)
-gis = gis.drop_duplicates(subset=['buildingId','geometry'])
-gis = gis.reset_index(drop=True)
 
-# The Geocoded building data from the previous methods.
-df = pd.read_csv('X:/UBEM/Data Pre-processing/outputData/processedGisDataBorlangeWithEPCCalibrated.csv')
-
-#df = pd.read_csv('X:/UBEM/Data Pre-processing/outputData/dfCompleteBorlangeCalibratedV1.csv')
-#df = pd.read_excel('X:/UBEM/Data Pre-processing/outputData/dfCompleteGISonlyModifiedHeightBorlange.xlsx')
-
+# Reads the input data for buildings.
+df = pd.read_csv('inputs/exampleData.csv')
+# Converts the data frame to a geodataframe
 df['geometry'] = df['geometry'].apply(wkt.loads)
 df = gpd.GeoDataFrame(df, crs='epsg:3006')
 df = df.drop('Unnamed: 0', axis = 1)
 
-df = df[(df['EgenAntalPlan']!=0)&
-        (df['EgenAtemp']!=0)]
 
-df = df[df['costructionYear']!=0]
-df = df.reset_index(drop=True)
+# For the example file, Atemp = footprint area
+gis = df
 
 
 # Input parameters from a user defined text file.
-parameters = pd.read_csv('parameters.txt', sep = ',', header = 'infer', 
+parameters = pd.read_csv('inputs/parameters.txt', sep = ',', header = 'infer', 
                          encoding= 'ANSI')
 
+# Reads the occupancy inputs.
+occupancyInputs = pd.read_csv('inputs/occupancyInputs.csv', sep=';',low_memory=False)
 
 """ Initializing the input parameters """
 
@@ -78,14 +68,12 @@ parameters = pd.read_csv('parameters.txt', sep = ',', header = 'infer',
 hotWaterTemp = parameters.hotWaterTemp[0]
 coldWaterTemp = parameters.coldWaterTemp[0]
 
+# Infiltration
 infiltration = pd.read_csv('archetypesCalibrated.txt').infiltration
-#infiltration = 0
-
-"ARCHETYPES"
-#cosntruction = pd.read_csv('construction.txt', sep = ',')
 
 
-#---------------------------------------------------
+""" Initializing the occupancy profiles """
+
 def leap_year(year):
     """
     Checks if the given year is leap year
@@ -96,16 +84,16 @@ def leap_year(year):
         return 0
 
 
-
+# Finds the first day of the year, i.e., Mon, Tue, ...
 firstDayOfYear = pd.read_csv(epw,sep=',',skiprows = 7,
                              low_memory=False).columns[4]
 
+# Finds if the simulation year is a leap year
 year = int(pd.read_csv(epw,sep=',',skiprows = 8, low_memory=False).columns[0])
 leapYear = leap_year(year)
 
-occupancyInputs = pd.read_csv('occupancyInputs.csv', sep=';',low_memory=False)
+# Makes the occupancy profile for the two main types of buildings.
 buildings = ['Apartment', 'House']
-
 for i in range(2):
     occupancy = occupancyInputs.iloc[:,2*i:2*i+2]
     personHeat = occupancyInputs.iloc[:,2*i+4:2*i+6]
@@ -122,10 +110,10 @@ for i in range(2):
                                                             leapYear, 
                                                             buildings[i])
 
-# MULTIPROCESSING SIMULATION RUN FOR THE DATASET
-#-----------------------------------------------
+"MULTIPROCESSING SIMULATION RUN FOR THE DATASET"
 
 
+# Removes the output
 def remove ():
     """
     Removes the output files from EnergyPlus after each simulation run.
@@ -135,6 +123,8 @@ def remove ():
     return None
 
 
+def UBEM(building):
+    
 
 "RUNS the SIMULATION"
 if __name__ == '__main__':
@@ -146,44 +136,51 @@ if __name__ == '__main__':
         print('SIMULATION IS RUNNING ...')
         print('                         ')
         
-        DH = []
-        A = []
-        for i in range (len(df)):           
+        SIMULATIONOUTPUT = []
+        ARCHETYPE = []
+        for i in range (len(df)-1):           
             print ('Building',i,'/',len(df))
             try:
-                dff = gpd.GeoDataFrame((df.iloc[i]).to_frame().T).reset_index(drop=True)
-                dff = dff.set_crs('EPSG:3006')
-                idx = i
-                buildingType = dff.buildingType[0]
-                mainType = Archetype.building_type(buildingType)
-                buildingYear = dff.costructionYear[0]
-                arch = Archetype.archetype(mainType, buildingYear)
-                A.append(arch)
+                buildDat = df.iloc[i:i+1].reset_index(drop=True)
 
-                #floorHeight = 2.8
-                floorHeight = 2.5 #!! Change the height for the occupanct as well. 
-                buildingId = dff.buildingId[0]
-                buildingPolygon= Polygon (dff.geometry[0])            
-                basementInfo = dff.EgenAntalKallarplan[0]
-                #buildingHeight = dff.modifiedHeight[0] 
-                buildingHeight = (dff.EgenAntalPlan[0]*floorHeight) + (1 if basementInfo!=0 else 0)
-                buildingArea = dff.area[0]
-                propertyCode = dff.propertyCode[0]
-                buildingFloor = dff.EgenAntalPlan[0] #On ground floors
-                #buildingFloor = np.round(buildingHeight/2.8)
+                buildingType = buildDat.buildingType[0] # Detailed type of building
+                mainType = Archetype.building_type(buildingType) # Main type of building
+                buildingYear = buildDat.constructionYear[0] # Construction year of building
+                arch = Archetype.archetype(mainType, buildingYear)
+                ARCHETYPE.append(arch)
+
+
+                floorHeight = 2.5
+                buildingId = buildDat.buildingId[0]
+                buildingPolygon= Polygon (buildDat.geometry[0])            
+                basementInfo = buildDat.heatedBasement[0]    
+                buildingFloor = buildDat.heatedFloors[0] #On ground floors              
+
+                if buildingFloor != 0:
+                    buildingHeight = (buildingFloor*floorHeight) + (1 if basementInfo!=0 else 0)
+                    
+                else:
+                    buildingHeight = buildDat.buildingHeight[0]
+                    buildingFloor = np.round(buildingHeight/2.8)  
+                
+
+                buildingArea = buildDat.area[0]
+                propertyCode = buildDat.propertyCode[0]
+
                 windowAreaBBR = np.round(buildingArea * buildingFloor * 0.1)
                 perimeter = 0
-                x,y = dff.geometry[0].exterior.xy
+                x,y = buildingPolygon.exterior.xy
                 for j in range(len(x)-1):
                     line = LineString([(x[j],y[j]),(x[j+1],y[j+1])]).length
                     if line>2:
                         perimeter += line
                         
-                wwr = windowAreaBBR/(perimeter * buildingFloor*floorHeight)
+                wwr = windowAreaBBR/(perimeter * buildingFloor * floorHeight)
     
                 
-                material_idf = IDF("archetypesCalibrated/Archetype%d.idf" %arch)   
-                heatRecovery = 1 if dff.VentTypFTX[0] =='Ja' or dff.VentTypFmed[0]=='Ja' else 0
+                material_idf = IDF("archetypesCalibrated/Archetype%d.idf" %arch)
+                                   
+                heatRecovery = 1 if buildDat.ventilationType[0] =='FTX' else 0
                 heatRecoveryEffect = 0.5 if heatRecovery == 1 else 0
                 infFlow = infiltration[arch-1]
                 idf = Simulation.building_idf (buildingPolygon, buildingArea, 
@@ -194,11 +191,12 @@ if __name__ == '__main__':
                                                maxFlowHotWater, mainType,
                                                heatRecovery, heatRecoveryEffect,
                                                infFlow, gis, idx, propertyCode)
-                DH.append(Simulation.simulation (idf ,basementInfo))
+                
+                SIMULATIONOUTPUT.append(Simulation.simulation (idf ,basementInfo))
     
                 remove()
             except:
-                DH.append([0,0,0,0,0])
+                SIMULATIONOUTPUT.append([0,0,0,0,0])
             
              
     t2 = time()
@@ -210,11 +208,9 @@ if __name__ == '__main__':
 #VALIDATION OF RESULTS
 #-----------------------------
 
-df['archetype']=A
+df['archetype'] = ARCHETYPE
 
-
-
-dh = pd.DataFrame(DH)
+dh = pd.DataFrame(SIMULATIONOUTPUT)
 
 
 Troom = []
