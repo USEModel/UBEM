@@ -1,0 +1,16 @@
+archetype,buildingType,buildingYearFrom,buildingYearTo,infiltration
+1,House,2010,2021,0
+2,House,2000,2020,0
+3,House,1990,2000,0.2
+4,House,1980,1990,0.2
+5,House,1970,1980,0.2
+6,House,1960,1970,0.2
+7,House,1950,1960,0.2
+8,House,0,1950,0.2
+9,Apartment,2010,2021,0
+10,Apartment,2000,2010,0
+11,Apartment,1990,2000,0
+12,Apartment,1975,1990,0
+13,Apartment,1960,1975,0
+14,Apartment,1945,1960,0
+15,Apartment,0,1945,0
