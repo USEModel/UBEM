@@ -6,6 +6,7 @@ Created on Mon Jun 27 13:00:38 2022
 """
 
 from shapely import affinity
+from shapely.geometry import LineString
 import io
 from eppy.modeleditor import IDF
 import numpy as np
