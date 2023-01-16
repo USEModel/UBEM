@@ -1,0 +1,134 @@
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+Material,
+    Cellplast 300mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.30,                  !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    25,                    !- Density {kg/m3}
+    1400;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Concrete 100mm,       !- Name
+    MediumRough,             !- Roughness
+    0.10,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Gypsum 13mm,               !- Name
+    MediumSmooth,            !- Roughness
+    0.013,                   !- Thickness {m}
+    0.22,                    !- Conductivity {W/m-K}
+    900,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 220mm,   !- Name
+    MediumRough,             !- Roughness
+    0.22,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 22mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.022,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 20mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.02,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Cellplast 150mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.15,                  !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    25,                    !- Density {kg/m3}
+    1400;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 350mm,   !- Name
+    MediumRough,             !- Roughness
+    0.350,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 450mm,   !- Name
+    MediumRough,             !- Roughness
+    0.45,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+
+WindowMaterial:SimpleGlazingSystem,
+    SimpleWindow,               !- Name
+    1.49,         !- U-factor
+    0.63,                        !- Solar Heat Gain Coefficient
+    0.7;      ! - Visible Transmittance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Exterior Floor,          !- Name
+    Cellplast 300mm,  !- Outside Layer
+    Concrete 100mm,  !- Layer 2
+    Wood 22mm;  !- Layer 3
+
+Construction,
+    Exterior Floor Basement,          !- Name
+    Cellplast 300mm,  !- Outside Layer
+    Concrete 100mm,  !- Layer 2
+    Wood 22mm;  !- Layer 3
+
+
+Construction,
+    Interior Floor,          !- Name
+    Gypsum 13mm,       !- Outside Layer
+    Insulation 220mm,  !- Layer 2
+    Wood 22mm;  !- Layer 3
+
+Construction,
+    Interior Ceiling,        !- Name
+    Wood 22mm,       !- Outside Layer
+    Insulation 220mm,  !- Layer 2
+    Gypsum 13mm;  !- Layer 3
+
+Construction,
+    Exterior Wall,           !- Name
+    Wood 22mm,         !- Outside Layer
+    Insulation 350mm,  !- Layer 3
+    Gypsum 13mm;  !- Layer 4
+
+Construction,
+    Exterior Wall Basement,           !- Name
+    Cellplast 150mm,  !- Layer 3
+    Concrete 100mm;  !- Layer 4
+
+
+Construction,
+    Exterior Roof,           !- Name
+    Wood 20mm,  !- Outside Layer
+    Insulation 450mm,  !- Layer 2
+    Gypsum 13mm;  !- Layer 3
+
+
+Construction,
+    Exterior Window,         !- Name
+    SimpleWindow;               !- Layer 3
