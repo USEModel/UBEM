@@ -93,7 +93,7 @@ class Shading:
         
         for i in shading.index:
             shadingGeo = shading.geometry[i]
-            shadingHeight = shading.modifiedHeight[i]
+            shadingHeight = shading.buildingHeight[i]
             shadingPolygon =str("shadingPolygon%d"%i)
             shadingH = str("shadingHeight%d"%i)
         
