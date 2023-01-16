@@ -22,7 +22,6 @@ from simulation import Simulation
 from archetype import Archetype
 from occupancy import Initials
 from hvac import HVAC
-from visualization import Visualization
 
 
 
