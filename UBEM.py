@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 18 12:20:28 2021
-
-@author: fatjo876
-"""
-
-
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry.polygon import Polygon, LineString
@@ -30,7 +22,7 @@ from hvac import HVAC
 """ Initializing the simulation tool EnergyPlus """
 
 # Calls the idd (EnergyPlus exe file)
-iddfile = "C:/EnergyPlusV9-2-0/Energy+.idd"
+iddfile = "C:/EnergyPlusV9-1-0/Energy+.idd"
 
 # Initializes the idf file processing.
 IDF.setiddname(iddfile)
@@ -48,6 +40,7 @@ df = pd.read_csv('inputs/exampleData.csv')
 df['geometry'] = df['geometry'].apply(wkt.loads)
 df = gpd.GeoDataFrame(df, crs='epsg:3006')
 df = df.drop('Unnamed: 0', axis = 1)
+
 
 
 # For the example file, Atemp = footprint area
@@ -134,11 +127,10 @@ if __name__ == '__main__':
         
         SIMULATIONOUTPUT = []
         ARCHETYPE = []
-        for i in range (len(df)-1):           
+        for i in range (len(df)):           
             print ('Building',i,'/',len(df))
             try:
                 buildDat = df.iloc[i:i+1].reset_index(drop=True)
-                
                 idx = i
 
                 buildingType = buildDat.buildingType[0] # Detailed type of building
@@ -193,6 +185,7 @@ if __name__ == '__main__':
                 SIMULATIONOUTPUT.append(Simulation.simulation (idf ,basementInfo))
     
                 remove()
+                
             except:
                 SIMULATIONOUTPUT.append([0,0,0,0,0])
             
@@ -203,3 +196,31 @@ if __name__ == '__main__':
     print("----- Running time:", (t2-t1)//60, ' minutes and', np.round((t2-t1)-60*(t2-t1)//60,2)*60, ' seconds')
     print("----- Running time per building:", np.round((t2-t1)/len(df),2), ' seconds')
 
+
+# Analysis of the results
+
+SIMULATIONOUTPUT = pd.DataFrame(SIMULATIONOUTPUT)
+
+SH = []
+DHW = []
+El = []
+annualSH = []
+annualDHW = []
+annualELHousehold = []
+
+for i in range(len(SIMULATIONOUTPUT)):
+    El.append(SIMULATIONOUTPUT[2][i])
+    SH.append(SIMULATIONOUTPUT[3][i])
+    DHW.append(SIMULATIONOUTPUT[4][i])
+    annualDHW.append(np.sum(SIMULATIONOUTPUT[4][i]))
+    annualSH.append(np.sum(SIMULATIONOUTPUT[3][i]))
+    annualELHousehold.append(np.sum(SIMULATIONOUTPUT[2][i]))
+
+    
+    
+df['archetype'] = ARCHETYPE  
+df['annualSH'] = annualSH
+df['annualDHW'] = annualDHW
+df['annualELHousehold'] = annualELHousehold
+
+df.to_csv('results/simulationResults.csv')
