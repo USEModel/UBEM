@@ -27,7 +27,7 @@ class Shading:
         
         if propertyArea[0]>0:
             buildingArea = building.area
-            buildingHeight = building['modifiedHeight']
+            buildingHeight = building['buildingHeight']
             bcr = np.sum(buildingArea)/np.sum(propertyArea)
             far = np.sum( buildingArea* np.round(buildingHeight/2.8))/np.sum(propertyArea)
             
