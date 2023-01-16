@@ -20,6 +20,21 @@ Python (you can use Anaconda and Spyder to run the model): https://www.anaconda.
 
 5.shapely: https://pypi.org/project/shapley/
 
+6. Other packages that might be needed:
+fiona
+io
+itertools
+math
+matplotlib
+multiprocessing
+numpy
+openpyxl
+pandas
+pyproj
+rtree
+time
+
+
 After the installation is completed, open the "UBEM.py" file and run the codes.
 
 If the model starts running, you should be able to see this on the consol:
