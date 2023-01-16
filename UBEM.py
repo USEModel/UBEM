@@ -22,7 +22,7 @@ from hvac import HVAC
 """ Initializing the simulation tool EnergyPlus """
 
 # Calls the idd (EnergyPlus exe file)
-iddfile = "C:/EnergyPlusV9-1-0/Energy+.idd"
+iddfile = "C:/EnergyPlusV9-2-0/Energy+.idd"
 
 # Initializes the idf file processing.
 IDF.setiddname(iddfile)
