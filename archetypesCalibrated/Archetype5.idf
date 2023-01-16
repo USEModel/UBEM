@@ -1,13 +1,6 @@
 
 
 !-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
-Material,
-    Cellplast 300mm,      	     !- Name
-    MediumSmooth,                  !- Roughness
-    0.30,                  !- Thickness {m}
-    0.035,                   !- Conductivity {W/m-K}
-    25,                    !- Density {kg/m3}
-    1400;                     !- Specific Heat {J/kg-K}
 
 Material,
     Concrete 100mm,       !- Name
@@ -18,6 +11,20 @@ Material,
     920;                     !- Specific Heat {J/kg-K}
 
 Material,
+    Insulation 80mm,   !- Name
+    MediumRough,             !- Roughness
+    0.08,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+Material,
+    Insulation 220mm,   !- Name
+    MediumRough,             !- Roughness
+    0.22,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+Material,
     Gypsum 13mm,               !- Name
     MediumSmooth,            !- Roughness
     0.013,                   !- Thickness {m}
@@ -26,9 +33,9 @@ Material,
     1090;                    !- Specific Heat {J/kg-K}
 
 Material,
-    Insulation 220mm,   !- Name
+    Insulation 180mm,   !- Name
     MediumRough,             !- Roughness
-    0.22,                     !- Thickness {m}
+    0.18,                     !- Thickness {m}
     0.038,                    !- Conductivity {W/m-K}
     30,                      !- Density {kg/m3}
     1000;                    !- Specific Heat {J/kg-K}
@@ -42,61 +49,56 @@ Material,
     1700;                     !- Specific Heat {J/kg-K}
 
 Material,
-    Wood 20mm,      	     !- Name
-    MediumSmooth,                  !- Roughness
-    0.02,                  !- Thickness {m}
-    0.14,                   !- Conductivity {W/m-K}
-    650,                    !- Density {kg/m3}
-    1700;                     !- Specific Heat {J/kg-K}
+    Insulation 150mm,   !- Name
+    MediumRough,             !- Roughness
+    0.15,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
 
 Material,
-    Cellplast 150mm,      	     !- Name
+    Insulation 200mm,   !- Name
+    MediumRough,             !- Roughness
+    0.20,                     !- Thickness {m}
+    0.038,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Cellplast 20mm,      	     !- Name
     MediumSmooth,                  !- Roughness
-    0.15,                  !- Thickness {m}
+    0.02,                  !- Thickness {m}
     0.035,                   !- Conductivity {W/m-K}
     25,                    !- Density {kg/m3}
     1400;                     !- Specific Heat {J/kg-K}
 
-Material,
-    Insulation 350mm,   !- Name
-    MediumRough,             !- Roughness
-    0.350,                     !- Thickness {m}
-    0.038,                    !- Conductivity {W/m-K}
-    30,                      !- Density {kg/m3}
-    1000;                    !- Specific Heat {J/kg-K}
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:AIRGAP ===========
 
-Material,
-    Insulation 450mm,   !- Name
-    MediumRough,             !- Roughness
-    0.45,                     !- Thickness {m}
-    0.038,                    !- Conductivity {W/m-K}
-    30,                      !- Density {kg/m3}
-    1000;                    !- Specific Heat {J/kg-K}
-
+Material:AirGap,
+    AirResistance 22mm,  !- Name
+    0.022;                    !- Thermal Resistance {m2-K/W}
 
 !-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
 
 WindowMaterial:SimpleGlazingSystem,
     SimpleWindow,               !- Name
-    1.49,         !- U-factor
+    2.1,         !- U-factor
     0.63,                        !- Solar Heat Gain Coefficient
     0.7;      ! - Visible Transmittance
-
 
 !-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
 
 Construction,
     Exterior Floor,          !- Name
-    Cellplast 300mm,  !- Outside Layer
+    Insulation 80mm,  !- Outside Layer
     Concrete 100mm,  !- Layer 2
     Wood 22mm;  !- Layer 3
 
 Construction,
     Exterior Floor Basement,          !- Name
-    Cellplast 300mm,  !- Outside Layer
+    Insulation 80mm,  !- Outside Layer
     Concrete 100mm,  !- Layer 2
     Wood 22mm;  !- Layer 3
-
 
 Construction,
     Interior Floor,          !- Name
@@ -113,21 +115,19 @@ Construction,
 Construction,
     Exterior Wall,           !- Name
     Wood 22mm,         !- Outside Layer
-    Insulation 350mm,  !- Layer 3
+    Insulation 150mm,  !- Layer 3
     Gypsum 13mm;  !- Layer 4
 
 Construction,
     Exterior Wall Basement,           !- Name
-    Cellplast 150mm,  !- Layer 3
+    Cellplast 20mm,  !- Layer 3
     Concrete 100mm;  !- Layer 4
-
 
 Construction,
     Exterior Roof,           !- Name
-    Wood 20mm,  !- Outside Layer
-    Insulation 450mm,  !- Layer 2
+    Wood 22mm,  !- Outside Layer
+    Insulation 180mm,  !- Layer 2
     Gypsum 13mm;  !- Layer 3
-
 
 Construction,
     Exterior Window,         !- Name

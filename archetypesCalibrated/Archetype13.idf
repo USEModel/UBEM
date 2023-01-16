@@ -1,0 +1,170 @@
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+Material,
+    brick 125mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.125,                  !- Thickness {m}
+    0.7,                     !- Conductivity {W/m-K}
+    1600,                    !- Density {kg/m3}
+    840;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 50mm,        !- Name
+    MediumRough,             !- Roughness
+    0.05,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+Material,
+    Insulation 120mm,        !- Name
+    MediumRough,             !- Roughness
+    0.12,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 75mm,        !- Name
+    MediumRough,             !- Roughness
+    0.075,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+
+Material,
+    Insulation 150mm,        !- Name
+    MediumRough,             !- Roughness
+    0.15,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 35mm,        !- Name
+    MediumRough,             !- Roughness
+    0.035,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Clincer 200mm,            !- Name
+    MediumSmooth,            !- Roughness
+    0.20,                    !- Thickness {m}
+    1.1,                     !- Conductivity {W/m-K}
+    1700,                    !- Density {kg/m3}
+    1100;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Concrete 150mm,             !- Name
+    MediumRough,             !- Roughness
+    0.15,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Concrete 120mm,             !- Name
+    MediumRough,             !- Roughness
+    0.12,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Concrete 260mm,             !- Name
+    MediumRough,             !- Roughness
+    0.26,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Concrete 100mm,             !- Name
+    MediumRough,             !- Roughness
+    0.10,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Gravel 50mm,              !- Name
+    MediumSmooth,            !- Roughness
+    0.05,                    !- Thickness {m}
+    0.4,                     !- Conductivity {W/m-K}
+    1840,                    !- Density {kg/m3}
+    840;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 40mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.04,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+WindowMaterial:SimpleGlazingSystem,
+    SimpleWindow,               !- Name
+    2.7,         !- U-factor
+    0.63,                        !- Solar Heat Gain Coefficient
+    0.7;      ! - Visible Transmittance
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Exterior Wall,           !- Name
+    Brick 125mm,  		!- Layer 2
+    Insulation 75mm;  		!- Layer 3
+
+
+Construction,
+    Exterior Floor,          !- Name
+    Gravel 50mm, 
+    Clincer 200mm,       !- Outside Layer
+    Concrete 150mm,  !- Layer 4
+    Insulation 50mm;
+
+Construction,
+    Exterior Roof,           !- Name
+    Insulation 120mm,     !- Layer 3
+    Concrete 120mm;     !- Layer 5
+
+
+
+  Construction,
+    Interior Floor,          !- Name
+    Concrete 150mm,  !- Layer 4
+    Wood 40mm;
+
+  Construction,
+    Interior Ceiling,        !- Name
+    Wood 40mm,
+    Concrete 150mm;  !- Layer 4
+
+Construction,
+    Exterior Wall Basement,           !- Name
+    Insulation 35mm,  		!- Layer 2
+    Concrete 260mm;  		!- Layer 2
+
+Construction,
+    Exterior Floor Basement,          !- Name
+    Concrete 100mm;  !- Layer 2
+
+
+  Construction,
+    Interior Floor Basement,          !- Name
+    Concrete 150mm,  !- Layer 4
+    Wood 40mm;
+
+  Construction,
+    Interior Ceiling Basement,        !- Name
+    Wood 40mm,
+    Concrete 150mm;  !- Layer 4
+
+Construction,
+    Exterior Window,         !- Name
+    SimpleWindow;               !- Layer 3

@@ -1,0 +1,200 @@
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    Plat,                   !- Name
+    Smooth,                  !- Roughness
+    0.0008,                  !- Thickness {m}
+    45.28,                   !- Conductivity {W/m-K}
+    7824,                    !- Density {kg/m3}
+    500;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Mineralull 12cm,         !- Name
+    MediumRough,             !- Roughness
+    0.12,                     !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Mineralull 20cm,         !- Name
+    MediumRough,             !- Roughness
+    0.20,                     !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Betong 15cm,              !- Name
+    MediumRough,             !- Roughness
+    0.15,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+
+Material,
+    Betong 10cm,              !- Name
+    MediumRough,             !- Roughness
+    0.10,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Betong 20cm,              !- Name
+    MediumRough,             !- Roughness
+    0.2,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Betong 22cm,             !- Name
+    MediumRough,             !- Roughness
+    0.22,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Cellplast 12cm,          !- Name
+    MediumSmooth,            !- Roughness
+    0.12,                    !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    25,                      !- Density {kg/m3}
+    1400;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Cellplast 10cm,          !- Name
+    MediumSmooth,            !- Roughness
+    0.10,                    !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    25,                      !- Density {kg/m3}
+    1400;                    !- Specific Heat {J/kg-K}
+Material,
+    Brador 20mm,            !- Name
+    MediumSmooth,            !- Roughness
+    0.02,                    !- Thickness {m}
+    0.14,                    !- Conductivity {W/m-K}
+    650,                     !- Density {kg/m3}
+    1700;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Betongpannor,            !- Name
+    MediumRough,             !- Roughness
+    0.02,                    !- Thickness {m}
+    1.1,                     !- Conductivity {W/m-K}
+    2100,                    !- Density {kg/m3}
+    837;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Papp,                    !- Name
+    MediumRough,             !- Roughness
+    0.005,                   !- Thickness {m}
+    0.5,                     !- Conductivity {W/m-K}
+    650,                     !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    brick 120mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.12,                  !- Thickness {m}
+    0.7,                     !- Conductivity {W/m-K}
+    1600,                    !- Density {kg/m3}
+    840;                     !- Specific Heat {J/kg-K}
+
+
+  Material,
+    Concrete 225mm,             !- Name
+    MediumRough,             !- Roughness
+    0.225,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 50mm,        !- Name
+    MediumRough,             !- Roughness
+    0.05,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 120mm,        !- Name
+    MediumRough,             !- Roughness
+    0.12,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+Material,
+    Insulation 160mm,        !- Name
+    MediumRough,             !- Roughness
+    0.16,                   !- Thickness {m}
+    0.036,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+Material,
+    Gypsum 13mm,               !- Name
+    MediumSmooth,            !- Roughness
+    0.013,                   !- Thickness {m}
+    0.22,                    !- Conductivity {W/m-K}
+    900,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+
+
+WindowMaterial:SimpleGlazingSystem,
+    SimpleWindow,               !- Name
+    2.5,         !- U-factor
+    0.63,                        !- Solar Heat Gain Coefficient
+    0.7;      ! - Visible Transmittance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+Construction,
+    Exterior Wall,           !- Name
+    brick 120mm,          !- Outside Layer
+    Insulation 120mm,              !- Layer 2
+    Gypsum 13mm;
+
+
+Construction,
+    Exterior Floor,          !- Name
+    Brador 20mm,             !- Outside Layer
+    Cellplast 12cm,              !- Layer 2
+    Betong 10cm;             !- Layer 2
+
+
+Construction,
+    Exterior Roof,           !- Name
+    Insulation 160mm,         !- Layer 3
+    Betong 15cm;             !- Layer 4
+
+Construction,
+    Exterior Wall Basement,           !- Name
+    Insulation 50mm,  		!- Layer 2
+    Concrete 225mm;  		!- Layer 2
+
+Construction,
+    Exterior Floor Basement,          !- Name
+    Cellplast 10cm,              !- Layer 2
+    Betong 10cm;  !- Layer 2
+
+Construction,
+    Interior Floor,          !- Name
+    Insulation 50mm,
+    Betong 10cm;  !- Layer 4
+
+Construction,
+    Interior Ceiling,          !- Name
+    Betong 10cm,
+    Insulation 50mm;  !- Layer 4
+
+Construction,
+    Exterior Window,         !- Name
+    SimpleWindow;               !- Layer 3

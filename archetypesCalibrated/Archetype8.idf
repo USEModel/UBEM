@@ -1,0 +1,123 @@
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    Concrete 60mm,       !- Name
+    MediumRough,             !- Roughness
+    0.06,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Insulation 50mm,   !- Name
+    MediumRough,             !- Roughness
+    0.05,                     !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    30,                      !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+
+Material,
+    Sawdust 160mm,   !- Name
+    MediumRough,             !- Roughness
+    0.16,                     !- Thickness {m}
+    0.054,                    !- Conductivity {W/m-K}
+    350,                      !- Density {kg/m3}
+    900;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 25mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.025,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 20mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.02,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 50mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.05,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:AIRGAP ===========
+
+Material:AirGap,
+    AirResistance 20mm,  !- Name
+    0.02;                    !- Thermal Resistance {m2-K/W}
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+
+
+WindowMaterial:SimpleGlazingSystem,
+    SimpleWindow,               !- Name
+    2.5,         !- U-factor
+    0.63,                        !- Solar Heat Gain Coefficient
+    0.7;      ! - Visible Transmittance
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Exterior Floor,          !- Name
+    Concrete 60mm,  !- Outside Layer
+    Insulation 50mm,  !- Layer 2
+    Wood 20mm;  !- Layer 3
+
+Construction,
+    Exterior Floor Basement,          !- Name
+    Concrete 60mm,  !- Outside Layer
+    Insulation 50mm,  !- Layer 2
+    Wood 20mm;  !- Layer 3
+
+
+Construction,
+    Interior Floor,          !- Name
+    Wood 25mm,       !- Outside Layer
+    Sawdust 160mm,  !- Layer 2
+    Wood 25mm;  !- Layer 3
+
+Construction,
+    Interior Ceiling,        !- Name
+    Wood 25mm,       !- Outside Layer
+    Sawdust 160mm,  !- Layer 2
+    Wood 25mm;  !- Layer 3
+
+Construction,
+    Exterior Wall,           !- Name
+    Wood 25mm,         !- Outside Layer
+    AirResistance 20mm, !- Layer 2
+    Insulation 50mm,  !- Layer 3
+    Wood 50mm;  !- Layer 4
+
+Construction,
+    Exterior Wall Basement,           !- Name
+    Concrete 60mm,         !- Outside Layer
+    Insulation 50mm;  !- Layer 3
+
+Construction,
+    Exterior Roof,           !- Name
+    Wood 25mm,  !- Outside Layer
+    Sawdust 160mm,  !- Layer 2
+    Wood 25mm;  !- Layer 3
+
+
+Construction,
+    Exterior Window,         !- Name
+    SimpleWindow;               !- Layer 3
+
+
+
+
+

@@ -1,0 +1,189 @@
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+  Material,
+    Insulation 50mm,             !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    0.05,                     !- Conductivity {W/m-K}
+    500,                     !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation 35mm,             !- Name
+    MediumRough,             !- Roughness
+    0.035,                    !- Thickness {m}
+    0.1,                     !- Conductivity {W/m-K}
+    500,                     !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation 100mm,             !- Name
+    MediumRough,             !- Roughness
+    0.1,                    !- Thickness {m}
+    0.036,                     !- Conductivity {W/m-K}
+    500,                     !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation2 100mm,             !- Name
+    MediumRough,             !- Roughness
+    0.10,                  !- Thickness {m}
+    0.2,                    !- Conductivity {W/m-K}
+    1900,                    !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation2 200mm,             !- Name
+    MediumRough,             !- Roughness
+    0.2,                  !- Thickness {m}
+    0.2,                    !- Conductivity {W/m-K}
+    1900,                    !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation2 10mm,             !- Name
+    MediumRough,             !- Roughness
+    0.1,                  !- Thickness {m}
+    0.2,                    !- Conductivity {W/m-K}
+    1900,                    !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+Material,
+    Concrete 50mm,       !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Concrete 160mm,       !- Name
+    MediumRough,             !- Roughness
+    0.16,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+
+Material,
+    Concrete 140mm,       !- Name
+    MediumRough,             !- Roughness
+    0.14,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Concrete 250mm,       !- Name
+    MediumRough,             !- Roughness
+    0.25,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Concrete 100mm,       !- Name
+    MediumRough,             !- Roughness
+    0.10,                    !- Thickness {m}
+    1.7,                     !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    Wood 40mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.04,                  !- Thickness {m}
+    0.14,                   !- Conductivity {W/m-K}
+    650,                    !- Density {kg/m3}
+    1700;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Plaster 20mm,          !- Name
+    MediumRough,             !- Roughness
+    0.02,                    !- Thickness {m}
+    1.0,                    !- Conductivity {W/m-K}
+    600,                     !- Density {kg/m3}
+    1000;                    !- Specific Heat {J/kg-K}
+
+
+Material,
+    brick 250mm,      	     !- Name
+    MediumSmooth,                  !- Roughness
+    0.250,                  !- Thickness {m}
+    0.7,                     !- Conductivity {W/m-K}
+    1600,                    !- Density {kg/m3}
+    840;                     !- Specific Heat {J/kg-K}
+
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+WindowMaterial:SimpleGlazingSystem,
+    SimpleWindow,               !- Name
+    2.7,         !- U-factor
+    0.63,                        !- Solar Heat Gain Coefficient
+    0.7;      ! - Visible Transmittance
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Exterior Wall,           !- Name
+    Plaster 20mm,         !- Outside Layer
+    Brick 250mm,  		!- Layer 2
+    Insulation 50mm;  		!- Layer 3
+
+Construction,
+    Exterior Floor,          !- Name
+    Insulation 35mm, 
+    Concrete 140mm,       !- Outside Layer
+    Insulation2 100mm,  !- Layer 2
+    Wood 40mm;  !- Layer 4
+
+  Construction,
+    Exterior Roof,           !- Name
+    Concrete 50mm,              !- Layer 4
+    Insulation2 200mm,           !- Layer 5
+    Concrete 160mm;             !- Layer 6
+
+
+
+  Construction,
+    Interior Floor,          !- Name
+    Concrete 160mm,             !- Outside Layer
+    Insulation2 100mm,             !- Layer 2
+    Wood 40mm;              !- Layer 3
+
+  Construction,
+    Interior Ceiling,        !- Name
+    Wood 40mm,             !- Outside Layer
+    Insulation2 100mm,             !- Layer 2
+    Concrete 160mm;              !- Layer 3
+
+Construction,
+    Exterior Wall Basement,           !- Name
+    Insulation 35mm,  		!- Layer 2
+    Concrete 250mm;  		!- Layer 2
+
+Construction,
+    Exterior Floor Basement,          !- Name
+    Concrete 100mm;  !- Layer 2
+
+Construction,
+    Interior Ceiling Basement,          !- Name
+    Wood 40mm, 
+    Insulation2 100mm,       !- Outside Layer
+    Concrete 140mm,  !- Layer 2
+    Insulation 35mm;  !- Layer 4
+
+Construction,
+    Interior Floor Basement,          !- Name
+    Insulation 35mm, 
+    Concrete 140mm,       !- Outside Layer
+    Insulation2 100mm,  !- Layer 2
+    Wood 40mm;  !- Layer 4
+
+
+
+Construction,
+    Exterior Window,         !- Name
+    SimpleWindow;               !- Layer 3
