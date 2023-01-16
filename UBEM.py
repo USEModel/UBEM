@@ -138,6 +138,8 @@ if __name__ == '__main__':
             print ('Building',i,'/',len(df))
             try:
                 buildDat = df.iloc[i:i+1].reset_index(drop=True)
+                
+                idx = i
 
                 buildingType = buildDat.buildingType[0] # Detailed type of building
                 mainType = Archetype.building_type(buildingType) # Main type of building
