@@ -2,9 +2,14 @@
 This is an urban building energy model scripted in Python.
 
 
-This model is developed under the reasech project for "Activity-Based Urban Building and Mobility Energy Modeling (UBMEM) for Planning of Future Cities" funded by the Swedish Energy Agency.
+This model is developed under the research project for "Activity-Based Urban Building and Mobility Energy Modeling (UBMEM) for Planning of Future Cities" funded by the Swedish Energy Agency.
 
-UBEM.py is a collection of functions and classes which can be used for modeling and simulation of buildings at different spatial and temporal resolutions.
+If the model is used for research purposes, please make sure that the citation is properly done. To cite:
+
+F. Johari, F. Shadram, J. Widén, Urban building energy modeling from geo-referenced energy performance certificate data: Development, calibration, and validation, Sustainable Cities and Society, Volume 96, 2023, https://doi.org/10.1016/j.scs.2023.104664.
+
+
+UBEM.py is a collection of functions and classes that can be used for modeling and simulation of buildings at different spatial and temporal resolutions.
 
 
 Requirements
